@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript: Variables and Types</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        color: #2c3e50;
+      }
+      h1 {
+        color: #34495e;
+      }
+      h2 {
+        color: #3498db;
+      }
+      ul {
+        list-style-type: disc;
+        margin-left: 20px;
+      }
+      code {
+        background: #f4f4f4;
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
+      pre {
+        background: #f4f4f4;
+        padding: 10px;
+        border-left: 3px solid #3498db;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📘 JavaScript: Variables and Types</h1>
+
+    <h2>🎯 Mục Tiêu</h2>
+    <p>
+      Tài liệu này cung cấp toàn bộ kiến thức từ cơ bản đến nâng cao về
+      <strong>variables</strong> và <strong>types</strong> trong JavaScript,
+      giúp bạn:
+    </p>
+    <ul>
+      <li>Hiểu rõ cách khai báo và sử dụng biến.</li>
+      <li>Nắm bắt các kiểu dữ liệu và chuyển đổi giữa chúng.</li>
+      <li>
+        Làm quen với các khái niệm nâng cao như hoisting, scope, template
+        literals, closures, v.v.
+      </li>
+      <li>
+        Ôn tập câu hỏi phỏng vấn và luyện tư duy giải quyết vấn đề qua các câu
+        hỏi tình huống.
+      </li>
+    </ul>
+
+    <h2>📂 Nội Dung</h2>
+
+    <h3>1️⃣ Biến (Variables)</h3>
+    <ul>
+      <li>
+        <strong>var</strong>: function-scoped, có thể gán lại và khai báo lại.
+      </li>
+      <li>
+        <strong>let</strong>: block-scoped, có thể gán lại nhưng không khai báo
+        lại.
+      </li>
+      <li>
+        <strong>const</strong>: block-scoped, không thể gán lại, phải khởi tạo
+        ngay khi khai báo.
+      </li>
+    </ul>
+
+    <h3>2️⃣ Kiểu Dữ Liệu (Types)</h3>
+    <ul>
+      <li><strong>String</strong>: Dữ liệu văn bản, ví dụ: "Hello".</li>
+      <li><strong>Number</strong>: Số nguyên và số thập phân, ví dụ: 42.</li>
+      <li><strong>Boolean</strong>: True hoặc False, ví dụ: true.</li>
+      <li><strong>Null</strong>: Không có giá trị, ví dụ: null.</li>
+      <li>
+        <strong>Undefined</strong>: Biến được khai báo nhưng chưa gán giá trị,
+        ví dụ: let x.
+      </li>
+      <li><strong>Symbol</strong>: Giá trị duy nhất, ví dụ: Symbol("id").</li>
+      <li><strong>BigInt</strong>: Số lớn, ví dụ: 12345678901234567890n.</li>
+    </ul>
+
+    <h3>3️⃣ Hoisting</h3>
+    <p>Biến được hoisted (nâng lên đầu scope):</p>
+    <ul>
+      <li><strong>var</strong>: hoisted với giá trị <code>undefined</code>.</li>
+      <li>
+        <strong>let</strong> và <strong>const</strong>: hoisted nhưng không được
+        khởi tạo, sẽ gây <code>ReferenceError</code> nếu truy cập trước khi khai
+        báo.
+      </li>
+    </ul>
+
+    <h3>4️⃣ Scope</h3>
+    <ul>
+      <li><strong>Global Scope</strong>: Biến truy cập được từ mọi nơi.</li>
+      <li>
+        <strong>Function Scope</strong>: Biến chỉ truy cập được trong hàm.
+      </li>
+      <li>
+        <strong>Block Scope</strong>: Biến chỉ tồn tại trong khối (block)
+        <code>{}</code>.
+      </li>
+    </ul>
+
+    <h3>5️⃣ Template Literals</h3>
+    <p>Sử dụng dấu backticks để tạo chuỗi và nội suy biến.</p>
+    <pre><code>const name = "John";
+console.log(`Hello, ${name}`); // Output: Hello, John</code></pre>
+
+    <h3>6️⃣ Destructuring</h3>
+    <ul>
+      <li><strong>Array</strong>: Gán nhiều biến cùng lúc từ mảng.</li>
+      <pre><code>const [a, b] = [1, 2];</code></pre>
+      <li><strong>Object</strong>: Gán từ đối tượng.</li>
+      <pre><code>const { name, age } = { name: "John", age: 30 };</code></pre>
+    </ul>
+
+    <h3>7️⃣ Spread và Rest Operators</h3>
+    <ul>
+      <li><strong>Spread</strong>: Sao chép và mở rộng.</li>
+      <pre><code>const arr1 = [1, 2];
+const arr2 = [...arr1, 3, 4];</code></pre>
+      <li><strong>Rest</strong>: Gộp nhiều tham số thành mảng.</li>
+      <pre><code>function sum(...nums) {
+  return nums.reduce((acc, num) => acc + num, 0);
+}</code></pre>
+    </ul>
+
+    <h3>8️⃣ Closures</h3>
+    <p>
+      Closure là khả năng của hàm truy cập các biến trong scope cha ngay cả khi
+      scope cha đã kết thúc.
+    </p>
+    <pre><code>function outer() {
+  let count = 0;
+  return function inner() {
+    count++;
+    return count;
+  };
+}
+const increment = outer();
+console.log(increment()); // 1
+console.log(increment()); // 2</code></pre>
+
+    <h2>🤔 Câu Hỏi Phỏng Vấn (Nâng Cao)</h2>
+
+    <h3>🟡 Câu Hỏi Trung Bình</h3>
+    <ul>
+      <li>
+        JavaScript xử lý ép kiểu (type coercion) như thế nào? Hãy đưa ra các
+        trường hợp cụ thể.
+      </li>
+      <li>
+        Sự khác biệt giữa "pass by value" và "pass by reference" trong
+        JavaScript?
+      </li>
+    </ul>
+
+    <h3>🔴 Câu Hỏi Nâng Cao</h3>
+    <ul>
+      <li>
+        Hãy giải thích cách hoạt động của "event loop" trong JavaScript và các
+        trạng thái của nó (call stack, callback queue, microtask queue).
+      </li>
+      <li>
+        Làm thế nào để xử lý các vấn đề liên quan đến "memory leaks" trong
+        JavaScript? Đưa ra ví dụ.
+      </li>
+      <li>
+        Phân biệt sự khác nhau giữa "deep copy" và "shallow copy"? Khi nào cần
+        sử dụng từng loại?
+      </li>
+    </ul>
+
+    <h3>🧠 Tình Huống Tư Duy</h3>
+    <ul>
+      <li>
+        Bạn được yêu cầu viết một chương trình để tính toán số Fibonacci thứ
+        <code>n</code> với hiệu suất cao nhất có thể. Hãy so sánh giải pháp đệ
+        quy và giải pháp sử dụng lập trình động.
+      </li>
+      <li>
+        Một ứng dụng có một số lượng lớn các sự kiện được xử lý không đồng bộ
+        (async). Làm thế nào để bạn quản lý và tối ưu hóa hiệu suất khi sử dụng
+        <code>Promise.all</code> hoặc <code>async/await</code>?
+      </li>
+      <li>
+        Trong một hệ thống lớn, một biến toàn cục đang được sử dụng để lưu trữ
+        trạng thái ứng dụng. Điều này dẫn đến lỗi không mong muốn. Làm thế nào
+        bạn sẽ tái cấu trúc mã để loại bỏ vấn đề này?
+      </li>
+      <li>
+        Một đoạn mã JavaScript đang chạy rất chậm. Làm thế nào bạn sẽ tìm ra
+        nguyên nhân gây chậm và cải thiện hiệu suất của mã?
+      </li>
+    </ul>
+
+    <h2>🔍 Gợi Ý Luyện Tập</h2>
+    <ul>
+      <li>
+        Viết chương trình để kiểm tra xem một chuỗi có phải là "palindrome" hay
+        không với độ phức tạp tối ưu.
+      </li>
+      <li>
+        Thực hiện "debounce" và "throttle" từ đầu và giải thích khi nào nên sử
+        dụng từng cái.
+      </li>
+      <li>
+        Giải quyết bài toán xử lý đồng thời (Concurrency) với
+        <code>Promise.race</code> hoặc <code>Promise.allSettled</code>.
+      </li>
+    </ul>
+
+    <script src="./index.js" />
+  </body>
+</html>
